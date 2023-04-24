@@ -5,13 +5,6 @@ require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  -- use {
-  --   'w0rp/ale',
-  --   ft = {'sh', 'zsh', 'bash', 'html', 'markdown', 'racket', 'vim', 'tex', 'javascript', 'typescript',},
-  --   cmd = 'ALEEnable',
-  --   config = 'vim.cmd[[ALEEnable]]'
-  -- }
-
   use {'dracula/vim'}
 
   use {'nvim-tree/nvim-tree.lua', require = 'nvim-tree/nvim-web-devicons'}
@@ -19,6 +12,8 @@ require('packer').startup(function(use)
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
   use {'mhartington/formatter.nvim'}
+
+  use {'neovim/nvim-lspconfig', config = function() require'plugins.lspconfig' end}
 end)
 
 require('plugins.ntree')
