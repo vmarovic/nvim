@@ -5,35 +5,16 @@ require("packer").startup(function(use)
 	-- Packer can manage itself
 	use("wbthomason/packer.nvim")
 
-	use({ "dracula/vim" })
-
+	use(require("plugins.ntree"))
+	use(require("plugins.treesitter"))
+	use(require("plugins.formatter"))
+	use(require("plugins.lspconfig"))
+	use(require("plugins.telescope"))
 	use({
-		"nvim-tree/nvim-tree.lua",
-		require = "nvim-tree/nvim-web-devicons",
+		"rose-pine/neovim",
+		as = "rose-pine",
 		config = function()
-			require("plugins.ntree")
-		end,
-	})
-
-	use({
-		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
-		config = function()
-			require("plugins.treesitter-config")
-		end,
-	})
-
-	use({
-		"mhartington/formatter.nvim",
-		config = function()
-			require("plugins.formatter-config")
-		end,
-	})
-
-	use({
-		"neovim/nvim-lspconfig",
-		config = function()
-			require("plugins.lspconfig")
+			vim.cmd("colorscheme rose-pine")
 		end,
 	})
 end)
