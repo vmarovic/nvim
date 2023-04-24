@@ -74,10 +74,20 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["formatter.nvim"] = {
+    loaded = true,
+    path = "/Users/vladimir/.local/share/nvim/site/pack/packer/start/formatter.nvim",
+    url = "https://github.com/mhartington/formatter.nvim"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/Users/vladimir/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
     url = "https://github.com/nvim-tree/nvim-tree.lua"
+  },
+  ["nvim-treesitter"] = {
+    loaded = true,
+    path = "/Users/vladimir/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["packer.nvim"] = {
     loaded = true,
