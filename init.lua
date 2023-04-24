@@ -1,4 +1,6 @@
 vim.g.mapleader = ","
-require('plugins')
 
-vim.cmd('colorscheme dracula')
+require("defaults")
+require("plugins")
+
+vim.cmd("colorscheme dracula")
