@@ -15,6 +15,9 @@ return {
 		{ "hrsh7th/cmp-nvim-lsp" },
 		{ "hrsh7th/cmp-nvim-lua" },
 
+		-- Signature
+		{ "ray-x/lsp_signature.nvim" },
+
 		-- Snippets
 		{ "L3MON4D3/LuaSnip" },
 		{ "rafamadriz/friendly-snippets" },
@@ -26,37 +29,10 @@ return {
 
 		lsp.ensure_installed({
 			"tsserver",
-			"rust_analyzer",
 		})
 
 		-- Fix Undefined global 'vim'
 		lsp.nvim_workspace()
-
-		local cmp = require("cmp")
-		local cmp_select = { behavior = cmp.SelectBehavior.Select }
-		local cmp_mappings = lsp.defaults.cmp_mappings({
-			["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-			["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-			["<C-y>"] = cmp.mapping.confirm({ select = true }),
-			["<C-Space>"] = cmp.mapping.complete(),
-		})
-
-		cmp_mappings["<Tab>"] = nil
-		cmp_mappings["<S-Tab>"] = nil
-
-		lsp.setup_nvim_cmp({
-			mapping = cmp_mappings,
-		})
-
-		lsp.set_preferences({
-			suggest_lsp_servers = false,
-			sign_icons = {
-				error = "E",
-				warn = "W",
-				hint = "H",
-				info = "I",
-			},
-		})
 
 		lsp.on_attach(function(client, bufnr)
 			local opts = { buffer = bufnr, remap = false }
@@ -94,6 +70,34 @@ return {
 		end)
 
 		lsp.setup()
+
+		local cmp = require("cmp")
+		local cmp_select = { behavior = cmp.SelectBehavior.Select }
+		local cmp_mappings = lsp.defaults.cmp_mappings({
+			["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+			["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+			["<C-y>"] = cmp.mapping.confirm({ select = true }),
+			["<C-Space>"] = cmp.mapping.complete(),
+		})
+
+		cmp_mappings["<Tab>"] = nil
+		cmp_mappings["<S-Tab>"] = nil
+
+		lsp.setup_nvim_cmp({
+			mapping = cmp_mappings,
+		})
+
+		require("lsp_signature").setup({ floating_window = false, hint_enabled = true, close_timeout = 1000 })
+
+		lsp.set_preferences({
+			suggest_lsp_servers = false,
+			sign_icons = {
+				error = "E",
+				warn = "W",
+				hint = "H",
+				info = "I",
+			},
+		})
 
 		vim.diagnostic.config({
 			virtual_text = true,

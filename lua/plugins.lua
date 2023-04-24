@@ -17,8 +17,8 @@ require("packer").startup(function(use)
 			vim.cmd("colorscheme rose-pine")
 		end,
 	})
-	use(require("plugins/trouble"))
 	use(require("plugins/lsp"))
+	use(require("plugins/trouble"))
 end)
 
 vim.api.nvim_set_keymap("n", "<Leader>ps", ":PackerSync<CR>", { noremap = true, silent = true })
