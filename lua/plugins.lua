@@ -20,6 +20,12 @@ require("packer").startup(function(use)
 	use(require("plugins/lsp"))
 	use(require("plugins/trouble"))
 	use({ "tpope/vim-fugitive" })
+	use({
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup()
+		end,
+	})
 end)
 
 vim.api.nvim_set_keymap("n", "<Leader>ps", ":PackerSync<CR>", { noremap = true, silent = true })
