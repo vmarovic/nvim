@@ -1,11 +1,31 @@
-vim.o.tabstop = 2
-vim.o.shiftwidth = 2
-vim.o.expandtab = true
-vim.o.softtabstop = 2
-vim.o.smartindent = true
-vim.o.autoindent = true
-vim.o.smarttab = true
+-- Set tab size and use spaces for tabs
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.softtabstop = 2
+vim.opt.smartindent = true
+vim.opt.autoindent = true
+vim.opt.smarttab = true
 
-vim.o.signcolumn = "yes"
+vim.opt.signcolumn = "yes" -- Always show gutter
 
-vim.o.global = true -- Set options globally for new buffers
+vim.api.nvim_set_option("clipboard", "unnamedplus") -- Use system clipboard
+
+-- Trun off swapfile
+vim.opt.swapfile = false
+vim.opt.backup = false
+
+-- Preserve on quit
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+
+vim.opt.colorcolumn = "120"
+
+vim.opt.incsearch = true
+vim.opt.hlsearch = false
+
+vim.opt.termguicolors = true
+
+vim.opt.scrolloff = 8
+
+-- vim.opt.global = true -- Set options globally for new buffers
