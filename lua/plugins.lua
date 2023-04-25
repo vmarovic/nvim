@@ -26,6 +26,7 @@ require("packer").startup(function(use)
 			require("gitsigns").setup()
 		end,
 	})
+	use(require("plugins.lualine"))
 end)
 
 vim.api.nvim_set_keymap("n", "<Leader>ps", ":PackerSync<CR>", { noremap = true, silent = true })
