@@ -19,6 +19,7 @@ require("packer").startup(function(use)
 	})
 	use(require("plugins/lsp"))
 	use(require("plugins/trouble"))
+	use({ "tpope/vim-fugitive" })
 end)
 
 vim.api.nvim_set_keymap("n", "<Leader>ps", ":PackerSync<CR>", { noremap = true, silent = true })
