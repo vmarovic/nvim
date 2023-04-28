@@ -27,6 +27,7 @@ require("packer").startup(function(use)
 		end,
 	})
 	use(require("plugins.lualine"))
+	use(require("plugins.nvim-comment"))
 end)
 
 vim.api.nvim_set_keymap("n", "<Leader>ps", ":PackerSync<CR>", { noremap = true, silent = true })

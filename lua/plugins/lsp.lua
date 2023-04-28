@@ -34,6 +34,22 @@ return {
 		-- Fix Undefined global 'vim'
 		lsp.nvim_workspace()
 
+		local cmp = require("cmp")
+		local cmp_select = { behavior = cmp.SelectBehavior.Select }
+		local cmp_mappings = lsp.defaults.cmp_mappings({
+			["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+			["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+			["<C-y>"] = cmp.mapping.confirm({ select = true }),
+			["<C-Space>"] = cmp.mapping.complete(),
+		})
+
+		cmp_mappings["<Tab>"] = nil
+		cmp_mappings["<S-Tab>"] = nil
+
+		lsp.setup_nvim_cmp({
+			mapping = cmp_mappings,
+		})
+
 		lsp.on_attach(function(client, bufnr)
 			local opts = { buffer = bufnr, remap = false }
 
@@ -70,22 +86,6 @@ return {
 		end)
 
 		lsp.setup()
-
-		local cmp = require("cmp")
-		local cmp_select = { behavior = cmp.SelectBehavior.Select }
-		local cmp_mappings = lsp.defaults.cmp_mappings({
-			["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-			["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-			["<C-y>"] = cmp.mapping.confirm({ select = true }),
-			["<C-Space>"] = cmp.mapping.complete(),
-		})
-
-		cmp_mappings["<Tab>"] = nil
-		cmp_mappings["<S-Tab>"] = nil
-
-		lsp.setup_nvim_cmp({
-			mapping = cmp_mappings,
-		})
 
 		require("lsp_signature").setup({ floating_window = false, hint_enabled = true, close_timeout = 1000 })
 
