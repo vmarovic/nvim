@@ -28,6 +28,19 @@ require("packer").startup(function(use)
 	})
 	use(require("plugins.lualine"))
 	use(require("plugins.nvim-comment"))
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	})
+	use(require("plugins.harpoon"))
+	use({
+		"cseickel/diagnostic-window.nvim",
+		requires = { "MunifTanjim/nui.nvim" },
+	})
 end)
 
 vim.api.nvim_set_keymap("n", "<Leader>ps", ":PackerSync<CR>", { noremap = true, silent = true })
