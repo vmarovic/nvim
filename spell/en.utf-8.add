@@ -1,3 +1,6 @@
 atheneum
 utils
 sequelize
+nestjs
+auth
+jwt
