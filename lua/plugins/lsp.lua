@@ -1,7 +1,7 @@
 return {
 	"VonHeikemen/lsp-zero.nvim",
 	branch = "v1.x",
-	requires = {
+	dependencies = {
 		-- LSP Support
 		{ "neovim/nvim-lspconfig" },
 		{ "williamboman/mason.nvim" },
@@ -71,7 +71,7 @@ return {
 			vim.keymap.set("n", "]d", function()
 				vim.diagnostic.goto_prev()
 			end, opts)
-			vim.keymap.set("n", "<leader>vca", function()
+			vim.keymap.set("n", "<leader><space>", function()
 				vim.lsp.buf.code_action()
 			end, opts)
 			vim.keymap.set("n", "<leader>vrr", function()
