@@ -94,5 +94,31 @@ require("lazy").setup({
         jester.run()
       end)
     end
-  }
+  },
+  {
+    "github/copilot.vim"
+  },
+  {
+    "kndndrj/nvim-dbee",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    build = function()
+      -- Install tries to automatically detect the install method.
+      -- if it fails, try calling it with one of these parameters:
+      --    "curl", "wget", "bitsadmin", "go"
+      require("dbee").install("go")
+    end,
+    config = function()
+      require("dbee").setup({
+        sources = {
+          require("dbee/sources").MemorySource:new({
+            name = "test",
+            type = "mysql",
+            url= "mysql://atheneum:atheneum@127.0.0.1:3306/legacy_platform",
+          }),
+        }
+      })
+    end,
+  },
 }, opts)
