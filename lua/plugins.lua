@@ -45,13 +45,9 @@ require("lazy").setup({
   require("plugins/trouble"),
   { "tpope/vim-fugitive" },
   { "tpope/vim-surround" },
-  {
-    "rose-pine/neovim",
-    as = "rose-pine",
-    config = function()
-      vim.cmd("colorscheme rose-pine")
-    end,
-  },
+  { "fxn/vim-monochrome", as = "monochrome", config = function() vim.cmd("colorscheme monochrome") end, },
+  { "sjl/badwolf", as = "badwolf",},
+  { "rose-pine/neovim", as = "rose-pine", },
   {
     "lewis6991/gitsigns.nvim",
     config = function()
@@ -63,9 +59,11 @@ require("lazy").setup({
   require("plugins.harpoon"),
   {
     "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    setup = function()
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && npm install",
+    init = function()
       vim.g.mkdp_filetypes = { "markdown" }
+      vim.keymap.set("n", "<leader>md", function() vim.cmd("MarkdownPreviewToggle") end)
     end,
     ft = { "markdown" },
   },
@@ -95,9 +93,9 @@ require("lazy").setup({
       end)
     end
   },
-  {
-    "github/copilot.vim"
-  },
+  -- {
+  --   "github/copilot.vim"
+  -- },
   {
     "kndndrj/nvim-dbee",
     dependencies = {

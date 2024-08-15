@@ -3,6 +3,13 @@ return {
 	dependencies = { { "nvim-lua/plenary.nvim" } },
 	config = function()
 		local builtin = require("telescope.builtin")
+
+    require('telescope').setup({
+      defaults = {
+        layout_strategy = 'vertical',
+      },
+    })
+
 		vim.keymap.set("n", "<C-p>", builtin.git_files, {})
 		vim.keymap.set("n", "<leader>fc", builtin.commands, {})
 		vim.keymap.set("n", "<leader>/", builtin.live_grep, {})
