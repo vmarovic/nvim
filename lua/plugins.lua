@@ -45,9 +45,9 @@ require("lazy").setup({
   require("plugins/trouble"),
   { "tpope/vim-fugitive" },
   { "tpope/vim-surround" },
-  { "fxn/vim-monochrome", as = "monochrome", config = function() vim.cmd("colorscheme monochrome") end, },
   { "sjl/badwolf", as = "badwolf",},
   { "rose-pine/neovim", as = "rose-pine", },
+  { "fxn/vim-monochrome", as = "monochrome", config = function() vim.cmd("colorscheme rose-pine") end, },
   {
     "lewis6991/gitsigns.nvim",
     config = function()
@@ -93,9 +93,9 @@ require("lazy").setup({
       end)
     end
   },
-  -- {
-  --   "github/copilot.vim"
-  -- },
+  {
+    "github/copilot.vim"
+  },
   {
     "kndndrj/nvim-dbee",
     dependencies = {
