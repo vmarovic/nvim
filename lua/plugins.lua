@@ -45,9 +45,10 @@ require("lazy").setup({
   require("plugins/trouble"),
   { "tpope/vim-fugitive" },
   { "tpope/vim-surround" },
+  { "fxn/vim-monochrome", as = "monochrome" },
   { "sjl/badwolf", as = "badwolf",},
   { "rose-pine/neovim", as = "rose-pine", },
-  { "fxn/vim-monochrome", as = "monochrome", config = function() vim.cmd("colorscheme rose-pine") end, },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000,  config = function() vim.cmd("colorscheme catppuccin-mocha") end, },
   {
     "lewis6991/gitsigns.nvim",
     config = function()

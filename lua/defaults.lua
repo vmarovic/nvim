@@ -34,8 +34,8 @@ vim.opt.scrolloff = 8
 
 -- vim.opt.global = true -- Set options globally for new buffers
 vim.opt.background = "dark"
-vim.opt.nu = false
-vim.opt.rnu = false
+vim.opt.nu = true
+vim.opt.rnu = true
 vim.opt.cursorline = true
 
 vim.opt.spell = true
