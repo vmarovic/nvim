@@ -120,4 +120,28 @@ require("lazy").setup({
       })
     end,
   },
+  {
+    "rest-nvim/rest.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      opts = function (_, opts)
+        opts.ensure_installed = opts.ensure_installed or {}
+        table.insert(opts.ensure_installed, "http")
+      end,
+    }
+  },
+  require("plugins.code-companion"),
 }, opts)
+
+
+require("codecompanion").setup({
+  adapters = {
+    openai = function()
+      return require("codecompanion.adapters").extend("openai", {
+        env = {
+          api_key = os.getenv("OPENAI_KEY_NVIM"), -- Fetch the key from an environment variable
+        },
+      })
+    end,
+  },
+})

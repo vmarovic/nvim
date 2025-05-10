@@ -31,8 +31,8 @@ return {
           require("formatter.filetypes.go").gofmt,
         },
 
-				-- Use the special "*" filetype for defining formatter configurations on
-				-- any filetype
+        -- Use the special "*" filetype for defining formatter configurations
+        -- on any filetype
 				["*"] = {
 					-- "formatter.filetypes.any" defines default configurations for any
 					-- filetype
@@ -48,6 +48,8 @@ return {
   augroup END
 ]])
 
-		vim.api.nvim_set_keymap("n", "<Leader>f", ":Format<CR>", { noremap = true, silent = true })
+		vim.api.nvim_set_keymap("n", "<Leader>f", ":Format<CR>", {
+      noremap = true, silent = true
+    })
 	end,
 }

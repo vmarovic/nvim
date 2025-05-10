@@ -20,7 +20,7 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
-vim.opt.colorcolumn = "120"
+vim.opt.colorcolumn = "80"
 
 vim.opt.incsearch = true
 vim.opt.hlsearch = false
@@ -33,9 +33,9 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 
 -- vim.opt.global = true -- Set options globally for new buffers
-vim.opt.background = "dark"
+-- vim.opt.background = "dark"
 vim.opt.nu = true
-vim.opt.rnu = true
+vim.opt.rnu = false
 vim.opt.cursorline = true
 
 vim.opt.spell = true
