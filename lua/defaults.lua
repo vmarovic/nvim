@@ -1,12 +1,24 @@
 -- Set tab size and use spaces for tabs
-vim.opt.tabstop = 2
+vim.opt.tabstop = 4
 vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
+vim.opt.expandtab = false
 vim.opt.softtabstop = 2
 vim.opt.smartindent = true
 vim.opt.autoindent = true
-vim.opt.smarttab = true
+vim.opt.smarttab = false
 vim.opt.wrap = false
+vim.opt.conceallevel = 0 -- Default to 0 for all file types
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("MarkdownConceal", { clear = true }),
+  callback = function()
+    if vim.bo.filetype == "markdown" then
+      vim.opt_local.conceallevel = 2
+    else
+      vim.opt_local.conceallevel = 0
+    end
+  end,
+})
 
 vim.opt.signcolumn = "yes" -- Always show gutter
 

@@ -5,7 +5,7 @@ return {
 		local ui = require("harpoon.ui")
 
 		vim.keymap.set("n", "mm", mark.add_file)
-		vim.keymap.set("n", "<leader>m", ui.toggle_quick_menu)
+		vim.keymap.set("n", "<leader>mm", ui.toggle_quick_menu)
 
 		vim.keymap.set("n", "<leader>1", function()
 			ui.nav_file(1)

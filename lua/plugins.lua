@@ -1,3 +1,5 @@
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -48,7 +50,7 @@ require("lazy").setup({
   { "fxn/vim-monochrome", as = "monochrome" },
   { "sjl/badwolf", as = "badwolf",},
   { "rose-pine/neovim", as = "rose-pine", },
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000,  config = function() vim.cmd("colorscheme catppuccin-mocha") end, },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000,  config = function() vim.cmd("colorscheme rose-pine") end, },
   {
     "lewis6991/gitsigns.nvim",
     config = function()
@@ -56,7 +58,7 @@ require("lazy").setup({
     end,
   },
   require("plugins.lualine"),
-  require("plugins.nvim-comment"),
+  -- require("plugins.nvim-comment"),
   require("plugins.harpoon"),
   {
     "iamcco/markdown-preview.nvim",
@@ -72,31 +74,31 @@ require("lazy").setup({
     "cseickel/diagnostic-window.nvim",
     requires = { "MunifTanjim/nui.nvim" },
   },
-  {
-    "David-Kunz/jester",
-    config = function ()
-      local jester = require("jester")
-      vim.keymap.set("n", "<leader>t", function()
-        local file_path = find_json_config_ts()
-        jester.setup({
-          terminal_cmd = ":split | terminal",
-          cmd = "node 'node_modules/.bin/jest' -t '$result' -c" .. file_path .. " -- $file"
-        })
-        jester.run()
-      end)
-      vim.keymap.set("n", "<leader>tw", function()
-        local file_path = find_json_config_ts()
-        jester.setup({
-          terminal_cmd = ":split | terminal",
-          cmd = "tmux split-window -h && tmux select-pane -t 1 && tmux send-keys 'node \"node_modules/.bin/jest\" -t \"$result\" --watch -c" .. file_path .. " -- $file' C-m"
-        })
-        jester.run()
-      end)
-    end
-  },
-  {
-    "github/copilot.vim"
-  },
+  -- {
+  --   "David-Kunz/jester",
+    -- config = function ()
+    --   local jester = require("jester")
+      -- vim.keymap.set("n", "<leader>t", function()
+      --   local file_path = find_json_config_ts()
+  --       jester.setup({
+  --         terminal_cmd = ":split | terminal",
+  --         cmd = "node 'node_modules/.bin/jest' -t '$result' -c" .. file_path .. " -- $file"
+  --       })
+  --       jester.run()
+  --     end)
+  --     vim.keymap.set("n", "<leader>tw", function()
+  --       local file_path = find_json_config_ts()
+  --       jester.setup({
+  --         terminal_cmd = ":split | terminal",
+  --         cmd = "tmux split-window -h && tmux select-pane -t 1 && tmux send-keys 'node \"node_modules/.bin/jest\" -t \"$result\" --watch -c" .. file_path .. " -- $file' C-m"
+  --       })
+  --       jester.run()
+  --     end)
+  --   end
+  -- },
+--  {
+ --   "github/copilot.vim"
+ -- },
   {
     "kndndrj/nvim-dbee",
     dependencies = {
@@ -131,17 +133,19 @@ require("lazy").setup({
     }
   },
   require("plugins.code-companion"),
+	--  {
+	--   "nvim-neorg/neorg",
+	--   lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+	--   version = "*", -- Pin Neorg to the latest stable release
+	--   config = function()
+	-- 	require('neorg').setup {
+	-- 	  load = {
+	-- 		['core.defaults'] = {},
+	-- 		['core.concealer'] = {},
+	-- 		['core.dirman'] = {},
+	-- 	  },
+	-- 	}
+	-- end,
+	--  },
+  require("plugins.obsidian")
 }, opts)
-
-
-require("codecompanion").setup({
-  adapters = {
-    openai = function()
-      return require("codecompanion.adapters").extend("openai", {
-        env = {
-          api_key = os.getenv("OPENAI_KEY_NVIM"), -- Fetch the key from an environment variable
-        },
-      })
-    end,
-  },
-})
